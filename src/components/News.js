@@ -3,19 +3,17 @@ import NewsItem from './NewsItem'
 import Spinner from './Spinner'
 import PropTypes from 'prop-types'
 
-
 export class News extends Component {
     static defaultProps = {
-        country : 'in',
+        country: 'in',
         pageSize: 8,
-        category : 'general'
+        category: 'general'
     }
     static propTypes = {
-        country : PropTypes.string,
-        pageSize : PropTypes.number,
-        category : PropTypes.string
+        country: PropTypes.string,
+        pageSize: PropTypes.number,
+        category: PropTypes.string
     }
-
     constructor() {
         super()
         this.state = {
@@ -62,7 +60,7 @@ export class News extends Component {
     render() {
         return (
             <div className="container my-3">
-                <h1 className="text-center"style={{margin: '35px 0px'}}>NewsGorrila - Top Headlines</h1>
+                <h1 className="text-center" style={{ margin: '35px 0px' }}>NewsGorrila - Top Headlines</h1>
                 {this.state.loading && <Spinner />}
                 <div className="row">
                     {!this.state.loading && this.state.articles.map((element) => {
@@ -79,5 +77,4 @@ export class News extends Component {
         )
     }
 }
-
 export default News
