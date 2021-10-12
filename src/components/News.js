@@ -29,15 +29,21 @@ export class News extends Component {
         document.title = `${this.capitailise(this.props.category)} - NewsGorrila`;
     }
     async updateNews() {
+        this.props.setProgress(10);
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1c369f69601b4b16add65ec0e820a1b4&page=${this.state.page}&pageSize=${this.props.pageSize}`
+        this.props.setProgress(30);
         this.setState({ loading: true })
+        this.props.setProgress(50);
         let data = await fetch(url);
         let parsedData = await data.json()
+        this.props.setProgress(70);
         this.setState({
             articles: parsedData.articles,
             totalResults: parsedData.totalResults,
             loading: false,
+
         })
+        this.props.setProgress(100)
     }
     async componentDidMount() {
         await this.updateNews()
